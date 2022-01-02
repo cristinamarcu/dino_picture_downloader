@@ -36,7 +36,7 @@ def get_dino_name(linkHref) -> Optional[str]:
     if len(linkdino) < 1:
         return None
     logging.info(f'{linkdino} is the name of the dinosaur from {linkHref}')
-    return linkdino
+    return linkdino[0]
 
 
 def downloadpicture_by_letter(letter: str, dinoFolder):
@@ -46,8 +46,8 @@ def downloadpicture_by_letter(letter: str, dinoFolder):
     for link in links:
         matchedDinoName = get_dino_name(link['href'])
         if matchedDinoName != None:
-            dinoPictureUrl = getpictureurl(matchedDinoName[0])
-            downloadpicture(dinoPictureUrl, matchedDinoName[0], dinoFolder)
+            dinoPictureUrl = getpictureurl(matchedDinoName)
+            downloadpicture(dinoPictureUrl, matchedDinoName, dinoFolder)
 
 """
 This program downloads dinosaur pictures from www.nhm.ac.uk
